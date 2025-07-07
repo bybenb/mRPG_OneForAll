@@ -1,0 +1,13 @@
+beny-xball-game
+    |
+    |-- xball.py
+    |-- pergaminho.py
+    |-- x-ball.txt
+    |-- README.md
+    |-- ouvido/
+    |       |-- clique.mp3
+    |       |-- empate.mp3
+    |       |-- vitori.mp3
+    |
+    
+

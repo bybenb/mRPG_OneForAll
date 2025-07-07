@@ -1,0 +1,70 @@
+/*
+    # Wklv Surjudp zdv pdgh eb 'Ehqb Uhlv LL' (@ebehqe ru @endsd8)
+    # Gdwd: ghcdvvhlv gh Mxqkr gh 2n25
+    # (F) 2n25 PlvvdrUSJ. Doo Uljkwv Uhvhuyhg 'Ehqb Uhlv LL'
+*/
+
+
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: #0a0a1a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: #00ff00;
+    overflow: hidden;
+}
+
+.game-container {
+    text-align: center;
+}
+
+h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px #00ff00;
+}
+
+.game-info {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+
+canvas {
+    background: #000;
+    border: 2px solid #00ff00;
+    box-shadow: 0 0 20px #00ff00;
+    display: block;
+    margin: 0 auto;
+}
+
+button {
+    padding: 10px 20px;
+    margin-top: 20px;
+    font-size: 1.2em;
+    background: #00ff00;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+button:hover {
+    background: #00cc00;
+    transform: scale(1.05);
+}
+
+.edemais {
+  position: absolute;
+  color: white;
+  bottom: 10px;
+  right: 10px;
+  font-size: 10px;
+}
+

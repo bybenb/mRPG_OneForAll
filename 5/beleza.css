@@ -1,0 +1,136 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(to bottom, #1e1e2f, #12121c);
+  color: #ffffff;
+  font-family: "Sirin Stencil", sans-serif;
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 2em;
+  margin-bottom: 15px;
+  color: #00ffc8;
+}
+
+input, button {
+  font-size: 1em;
+  padding: 10px;
+  margin: 5px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+}
+
+input {
+  width: 180px;
+}
+
+button {
+  background-color: #00ffc8;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #00c2a2;
+}
+
+canvas {
+  border: 3px solid #00ffc8;
+  border-radius: 10px;
+  background-color: #fff;
+  margin: 20px auto;
+  display: block;
+  box-shadow: 0 0 15px #00ffc8;
+}
+
+#timer {
+  font-size: 1.2em;
+  margin: 10px;
+  color: #fffa72;
+}
+
+h2 {
+  color: #ffffff;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+#ranking {
+  list-style: none;
+  max-width: 300px;
+  margin: 0 auto;
+  padding: 0;
+  text-align: left;
+}
+
+#ranking li {
+  background-color: rgba(255, 255, 255, 0.1);
+  margin: 5px 0;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 1em;
+  display: flex;
+  justify-content: space-between;
+  color: #ffffff;
+}
+
+#ranking li strong {
+  color: #00ffc8;
+}
+
+
+.sugoe {
+  position: absolute;
+
+  right: 1%;
+  color: floralwhite;
+  font-size: 11pt;
+}
+
+a {
+  color: floralwhite;
+  /* text-decoration: none; */
+  text-decoration: underline;
+}
+
+
+
+
+
+
+/* body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #f4f4f4;
+}
+
+canvas {
+  border: 2px solid black;
+  margin-top: 10px;
+  background: white;
+}
+
+input {
+  padding: 5px;
+  font-size: 1em;
+}
+
+button {
+  padding: 5px 15px;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+#ranking {
+  list-style: none;
+  padding: 0;
+} */

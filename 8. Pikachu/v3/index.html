@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beny's Game | Missão RPG 8</title>
+  <link rel="stylesheet" href="beleza.css" />
+</head>
+<body>
+  <div class="game-container">
+    <h1>PokeFight</h1>
+
+    <div class="battle-scene">
+      <!-- Inimigo -->
+      <div class="enemy" id="enemy">
+        <div class="pokemon-sprite">
+          <img src="img/img_blastoise.webp" alt="Blastoise" />
+        </div>
+        <div class="health-bar">
+          <div class="health" id="enemy-health"></div>
+        </div>
+        <div class="pokemon-name" id="enemy-name">Inimigo</div>
+        <div class="hp-text" id="enemy-hp-text">HP: 100/100</div>
+      </div>
+
+      <!-- Jogador -->
+      <div class="player" id="player">
+        <div class="pokemon-sprite">
+          <img src="img/img_charizard.webp" alt="Charizard" />
+        </div>
+        <div class="health-bar">
+          <div class="health" id="player-health"></div>
+        </div>
+        <div class="pokemon-name" id="player-name">Jogador</div>
+        <div class="hp-text" id="player-hp-text">HP: 100/100</div>
+      </div>
+    </div>
+
+    <div class="battle-log" id="battle-log">
+      <p>Uma batalha começou!</p>
+    </div>
+
+    <div class="actions" id="actions">
+      <button class="attack-btn">Investida</button>
+      <button class="attack-btn">Brasa</button>
+      <button class="attack-btn">Jato d'Água</button>
+      <button class="attack-btn">Chicote de Cipó</button>
+    </div>
+
+    <button id="start-btn">Começar Batalha</button>
+  </div>
+
+  <script src="logica.js"></script>
+</body>
+</html>

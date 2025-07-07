@@ -1,0 +1,110 @@
+body {
+  font-family: "Arial", sans-serif;
+  background: #222;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  color: white;
+  padding: 1rem;
+}
+
+.quadro-dojogo {
+  text-align: center;
+  width: 100%;
+  max-width: 900px;
+}
+
+h1 {
+  font-size: 2em;
+  color: #ffd700;
+  margin: 0.5em 0;
+}
+
+.infodo-jogo {
+  display: flex;
+  justify-content: space-around;
+  margin: 1em 0;
+  font-size: 1.1em;
+}
+
+canvas {
+  width: 100%;
+  height: auto;
+  max-width: 800px;
+  aspect-ratio: 16 / 10;
+  background: #111;
+  border: 2px solid #ffd700;
+  border-radius: 5px;
+  display: block;
+  margin: auto;
+  touch-action: none;
+}
+
+button {
+  padding: 10px 20px;
+  margin-top: 1em;
+  font-size: 1em;
+  background: #ffd700;
+  color: #222;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #ffc600;
+}
+
+.sugoe {
+  position: absolute;
+  bottom: 2%;
+  right: 2%;
+  font-size: 0.9em;
+  color: floralwhite;
+}
+
+a {
+  color: floralwhite;
+}
+
+
+
+/* ******************* */
+.controles-mobile {
+  display: none; 
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.controles-mobile button {
+  display: none; 
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #ffd700;
+  color: #222;
+  font-size: 1.8em;
+  border: none;
+  box-shadow: 0 0 8px #0005;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.controles-mobile button:active {
+  background-color: #ffc600;
+}
+
+
+@media (max-width: 768px) {
+  .controles-mobile {
+    display: flex;
+  }
+  .controles-mobile button {
+  display: flex;}
+
+}

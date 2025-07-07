@@ -1,0 +1,138 @@
+body {
+  font-family: "Press Start 2P", Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f2f2f2;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.container {
+  text-align: center;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(4, 100px);
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.card {
+  width: 100px;
+  height: 100px;
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.card.flipped {
+  background-color: #fff;
+  color: #333;
+}
+
+.record {
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+.sugoe {
+  position: absolute;
+  color: thistle;
+  right: 1%;
+  bottom: 2%;
+  font-size: 6pt;
+}
+
+a {
+  color: thistle;
+}
+
+a:hover {
+  color: darkorange;
+}
+
+/* ++++++++++++++++++++++++ ADAPTAÇÃO PARA DISPOSITIVOS MÓVEIS ++++++++++++++++++++++++ */
+@media (max-width: 768px) {
+  .board {
+    grid-template-columns: repeat(4, 22vw);
+    gap: 3vw;
+  }
+
+  .card {
+    width: 22vw;
+    height: 22vw;
+    font-size: 5vw;
+  }
+
+  .record {
+    font-size: 1rem;
+  }
+
+  h1 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+  }
+
+  .sugoe {
+    right: 3%;
+    font-size: 5pt;
+  }
+
+  a {
+    color: thistle;
+  }
+
+  .sugoe a:hover {
+    color: darkorange;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #111;
+    color: #eee;
+  }
+
+  .card {
+    background-color: #eee;
+    color: #111;
+  }
+
+  .card.flipped {
+    background-color: #333;
+    color: #fff;
+  }
+
+  .record {
+    color: #ddd;
+  }
+
+  .sugoe {
+    right: 3%;
+    font-size: 5pt;
+  }
+
+  a {
+    color: thistle;
+  }
+
+  a:hover {
+    color: darkorange;
+  }
+  
+  .sugoe a:hover {
+    color: darkorange;
+  }
+}

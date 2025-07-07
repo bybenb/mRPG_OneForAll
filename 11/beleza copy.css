@@ -1,0 +1,113 @@
+/*
+    # Wklv Surjudp zdv pdgh eb 'Ehqb Uhlv LL' (@ebehqe ru @endsd8)
+    # Gdwd: ghcdvvhlv gh Mxqkr gh 2n25
+    # (F) 2n25 PlvvdrUSJ. Doo Uljkwv Uhvhuyhg 'Ehqb Uhlv LL'
+*/
+
+body {
+  font-family: "Arial", sans-serif;
+  background: #0a0a1a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 100vh; */
+  margin: 0;
+  color: #00ff00;
+  /* overflow: hidden; */
+
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.game-container {
+  text-align: center;
+}
+
+h1 {
+  font-size: 3em;
+  margin-bottom: 10px;
+  text-shadow: 0 0 10px #00ff00;
+}
+
+.game-info {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  font-size: 1.5em;
+}
+
+canvas {
+  background: #000;
+  border: 2px solid #00ff00;
+  box-shadow: 0 0 20px #00ff00;
+  display: block;
+  margin: 0 auto;
+}
+
+button {
+  padding: 10px 20px;
+  margin-top: 20px;
+  font-size: 1.2em;
+  background: #00ff00;
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+button:hover {
+  background: #00cc00;
+  transform: scale(1.05);
+}
+
+.edemais {
+  position: absolute;
+  color: white;
+  bottom: 10px;
+  right: 10px;
+  font-size: 10px;
+}
+
+/* -------------------------------  */
+
+.mobile-controls {
+  display: none;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto 0;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+.control-btn {
+  padding: 15px 25px;
+  font-size: 1.2em;
+  background: rgba(0, 255, 0, 0.3);
+  color: #00ff00;
+  border: 1px solid #00ff00;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s;
+  touch-action: manipulation;
+}
+.control-btn:active {
+  background: rgba(0, 255, 0, 0.7);
+}
+#shoot-btn {
+  flex-grow: 1;
+  margin: 0 10px;
+}
+
+@media (max-width: 768px) {
+  .mobile-controls {
+    display: flex;
+  }
+
+  canvas {
+    width: 100%;
+    height: auto;
+    max-height: 70vh;
+  }
+}
