@@ -53,7 +53,6 @@ class VSJunior:
 
         self.setup_shortcuts()
 
-
     def abrirJanela_procuraMuda(self):
         Janela_procuraMuda(self.root, self.get_current_text_widget())
 
@@ -72,7 +71,6 @@ class VSJunior:
         else:
             self.style.theme_use("clam")
             text_widget.config(bg="white", fg="black", insertbackground="black")
-
 
     def abaNova(self, title):
         frame = ttk.Frame(self.notebook)
@@ -99,7 +97,6 @@ class VSJunior:
 
         return text_area
 
-
     def handle_tab_click(self, event):
         x, y = event.x, event.y
         element = self.notebook.identify(x, y)
@@ -109,17 +106,14 @@ class VSJunior:
             if tab_text.endswith("❌") and self.notebook.bbox(index)[2] - x < 25:
                 self.notebook.forget(index)
 
-
     def get_current_tab(self):
         current_tab = self.notebook.select()
         return self.notebook.index(current_tab)
-
 
     def get_current_text_widget(self):
         tab_id = self.get_current_tab()
         frame = self.notebook.winfo_children()[tab_id]
         return frame.winfo_children()[0]
-
 
     def abrir_ficheiro(self):
         file_path = filedialog.askopenfilename(filetypes=[("Arquivos de Texto", "*.txt"), ("Todos os arquivos", "*.*")])
@@ -131,7 +125,6 @@ class VSJunior:
             self.highlight_syntax(text_widget)
             self.notebook.tab(self.get_current_tab(), text=file_path.split("/")[-1])
 
-
     def slavar_ficheiro(self):
         text_widget = self.get_current_text_widget()
         file_path = filedialog.asksaveasfilename(defaultextension=".txt", filetypes=[("Arquivos de Texto", "*.txt")])
@@ -140,7 +133,6 @@ class VSJunior:
                 file.write(text_widget.get("1.0", tekinte.END))
             self.notebook.tab(self.get_current_tab(), text=file_path.split("/")[-1])
             messagebox.showinfo("Sucesso", "Arquivo salvo!")
-
 
     def mudar_fonte(self):
         font_window = tekinte.Toplevel(self.root)
@@ -152,11 +144,9 @@ class VSJunior:
 
         tekinte.Button(font_window, text="Aplicar", command=lambda: self.apply_font(font_family.get())).pack(pady=10)
 
-
     def apply_font(self, font_name):
         new_font = font.Font(family=font_name, size=12)
         self.get_current_text_widget().configure(font=new_font)
-
 
     def setup_shortcuts(self):
         self.root.bind("<Control-s>", lambda event: self.slavar_ficheiro())
@@ -178,7 +168,6 @@ class VSJunior:
                 end = f"{pos}+{len(kw)}c"
                 text_widget.tag_add("keyword", pos, end)
                 start = end
-
 
     def update_status(self, text_widget):
         index = text_widget.index(tekinte.INSERT)
@@ -238,7 +227,6 @@ class Janela_procuraMuda:
             new_content = content.replace(term, replacement)
             self.text.delete("1.0", tekinte.END)
             self.text.insert("1.0", new_content)
-
 
 if __name__ == "__main__":
     root = tekinte.Tk()
