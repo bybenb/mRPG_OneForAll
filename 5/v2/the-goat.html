@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Beny 's Game | Missão RPG 5</title>
+
+    <link rel="stylesheet" type="text/css" href="the-goat.css">
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sirin+Stencil&display=swap" rel="stylesheet">
+  </head>
+  <body>
+<!--     <div id="loading" class="loading">
+      Carregando recursos...
+    </div>
+     -->
+    <h1>Space Dodge</h1>
+    <input type="text" id="nome" placeholder="Seu nome" />
+    <button onclick="startGame()">Iniciar Missão</button>
+    <p id="timer">Tempo: 0.00s</p>
+    <canvas id="gameCanvas" width="400" height="600"></canvas>
+
+    <h2>Ranking Intergaláctico</h2>
+    <ul id="ranking"></ul>
+
+    <audio id="bgm" src="musica.m4a" loop></audio>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script>
+      var firebaseConfig = {
+        apiKey: "AIzaSyCh3J_ro8E-H7Mbkn3yEKR0H_BJqv0o-pw",
+        authDomain: "mrpg-project-06.firebaseapp.com",
+        databaseURL: "https://mrpg-project-06-default-rtdb.firebaseio.com",
+        projectId: "mrpg-project-06",
+        storageBucket: "mrpg-project-06.firebasestorage.app",
+        messagingSenderId: "767425513605",
+        appId: "1:767425513605:web:7af164338ddad4765f01ec",
+      };
+      firebase.initializeApp(firebaseConfig);
+
+      var db = firebase.database();
+    </script>
+
+    <div class="sugoe">by <a href="https://linktr.ee/bybenb_MissaoRPG" target="_blank">benb</a> with <a href="https://www.youtube.com/watch?v=X-w2i0aqIzU&list=RDX-w2i0aqIzU&start_radio=1" target="_blank">SteamBlood</a></div>
+
+    <script src="thegoat.js"></script>
+
+
+  </body>
+</html>
