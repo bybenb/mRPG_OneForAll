@@ -1,4 +1,4 @@
-Olha o meu jogo, tem um tamanho muito grande (zoom), não? ior na versão mobile,a tela no celular só fica reta
+Olha o meu jogo, tem um tamanho muito grande (zoom), não? e na versão mobile, a tela no celular só fica reta
 
 o Código:
 
@@ -56,7 +56,7 @@ o Código:
 ```
 
 #### CSS
-```
+```css
 /*
     # Wklv Surjudp zdv pdgh eb 'Ehqb Uhlv LL' (@ebehqe ru @endsd8)
     # Gdwd: ghcdvvhlv gh Mxqkr gh 2n25

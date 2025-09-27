@@ -4,16 +4,16 @@
     # (F) 2n25 PlvvdrUSJ. Doo Uljkwv Uhvhuyhg 'Ehqb Uhlv LL'
 */
 
+/* O nãoFlexivel mas mobileboy */
+
 body {
   font-family: "Arial", sans-serif;
   background: #0a0a1a;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* height: 100vh; */
   margin: 0;
   color: #00ff00;
-  /* overflow: hidden; */
 
   min-height: 100vh;
   overflow-x: hidden;
@@ -81,6 +81,7 @@ button:hover {
   padding: 0 10px;
   box-sizing: border-box;
 }
+
 .control-btn {
   padding: 15px 25px;
   font-size: 1.2em;
@@ -92,9 +93,11 @@ button:hover {
   transition: all 0.3s;
   touch-action: manipulation;
 }
+
 .control-btn:active {
   background: rgba(0, 255, 0, 0.7);
 }
+
 #shoot-btn {
   flex-grow: 1;
   margin: 0 10px;
@@ -111,3 +114,6 @@ button:hover {
     max-height: 70vh;
   }
 }
+
+
+

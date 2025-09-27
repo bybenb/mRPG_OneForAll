@@ -1,4 +1,0 @@
-pokemon-rpg/
-├── index.html
-├── style.css
-└── script.js

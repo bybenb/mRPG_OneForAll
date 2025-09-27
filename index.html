@@ -1,159 +1,98 @@
-
 <!DOCTYPE html>
-
-<html lang="pt-br">
-
+<html lang="pt-BR">
 <head>
-
-  <meta charset="UTF-8">
-
-  <title>HeroFandom</title>
-
-  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-
-
-  <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">-->
-
-  <link rel="stylesheet" href="fontawesome/css/all.min.css">
-  <link rel="stylesheet" href="beleza.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ベンビット | by ben b</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <!-- De Reserva -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="fontawesome/css/all.min.css">
+    <!--  -->
+    <link rel="stylesheet" href="style.css">
 
 </head>
-
 <body>
+    <div class="container text-center my-5">
+        
+        <header>
+            <h1 class="logo">ベンビット</h1>
+            <p class="subtitle">benBit</p>
+            <div class="avatar mb-4">
+                <i class="fas fa-gamepad"></i>
+            </div>
+        </header>
 
-  
+        
+        <!-- Section Intro -->
+        <section class="intro mb-5">
+            <p>2º <span class="highlight">"MissaoRPG"</span>!</p>
+        </section>
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container"><a class="navbar-brand" href="#">Hero Fandom</a></div>
-  </nav>
 
-  <main class="container mt-4">
+        <!-- Grid de Jogos -->
+        <section class="games">
+            <div class="row g-4">
+                <!-- Jogo 1: Jogo da Memória -->
+                <div class="col-md-4 col-sm-6">
+                    <div class="game-card card h-100">
+                        <div class="card-body">
+                            <i class="fas fa-brain game-icon"></i>
+                            <h3 class="game-title">Jogo da Memória</h3>
+                            <p class="game-desc">Encontre os pares das letras do nome.</p>
+                            <a href="1/index.html" class="btn btn-primary">Jogar</a>
+                        </div>
+                    </div>
+                </div>
 
-    <div class="row">
+                <!-- Jogo 2: Forca -->
+                <div class="col-md-4 col-sm-6">
+                    <div class="game-card card h-100">
+                        <div class="card-body">
+                            <i class="fas fa-ghost game-icon"></i>
+                            <h3 class="game-title">Forca do Benny</h3>
+                            <p class="game-desc">Adivinhe as letras antes do boneco enforcar!</p>
+                            <a href="#" class="btn btn-primary">Jogar</a>
+                        </div>
+                    </div>
+                </div>
 
-      <!-- Card Batman -->
+                <!-- Jogo 3: Digite Rápido -->
+                <div class="col-md-4 col-sm-6">
+                    <div class="game-card card h-100">
+                        <div class="card-body">
+                            <i class="fas fa-keyboard game-icon"></i>
+                            <h3 class="game-title">Digite "Benny"</h3>
+                            <p class="game-desc">Digite o nome o mais rápido que puder!</p>
+                            <a href="#" class="btn btn-primary">Jogar</a>
+                        </div>
+                    </div>
+                </div>
 
-      <div class="col-12 col-md-6 col-lg-4 mb-4">
+                <!-- ..................... ........................ ..................... .................. .......... ... -->
+            </div>
+        </section>
 
-        <div class="card h-100">
-
-          <img src="imagens/img_batman.png" class="card-img-top" alt="Batman">
-
-          <div class="card-body text-center">
-
-            <h5 class="card-title">Batman</h5>
-
-            <a href="batman.html" class="btn btn-dark"><i class="fas fa-mask"></i> Ver mais</a>
-
-          </div>
-
+        
+        <footer class="mt-5">
+            <p class="copyright">&copy; 2025 Waste Time | by ben b</p>
+            <div class="social-links">
+                <a href=""><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </footer>
+    
+        <div class="autografo">by ben b / <a href="http://linktr.ee/bybenb_MissaoRPG" ><span class="highlight">Proggenin</span></a>
         </div>
-
-      </div>
-
-      <!-- Card Homem-Aranha -->
-
-      <div class="col-12 col-md-6 col-lg-4 mb-4">
-
-        <div class="card h-100">
-
-          <img src="imagens/img_homem-aranha.jpg" class="card-img-top" alt="Homem-Aranha">
-
-          <div class="card-body text-center">
-
-            <h5 class="card-title">Homem-Aranha</h5>
-
-            <a href="aranhico.html" class="btn btn-danger"><i class="fas fa-spider"></i> Ver mais</a>
-
-          </div>
-
-        </div>
-
-      </div>
-
-      <!-- Card Capitão América -->
-
-      <div class="col-12 col-md-6 col-lg-4 mb-4">
-
-        <div class="card h-100">
-
-          <img src="imagens/img-captao_americax540x617.jpeg" class="card-img-top" alt="Capitão América">
-
-          <div class="card-body text-center">
-
-            <h5 class="card-title">Capitão América</h5>
-
-            <a href="captain_america.html" class="btn btn-primary"><i class="fa fa-star"></i> Ver mais</a>
-
-          </div>
-
-        </div>
-
-      </div>
-
-      <!-- Card Asa Noturna -->
-
-      <div class="col-12 col-md-6 col-lg-4 mb-4">
-
-        <div class="card h-100">
-
-          <img src="imagens/img_nightwing.png" class="card-img-top" alt="Asa Noturna">
-
-          <div class="card-body text-center">
-
-            <h5 class="card-title">Asa Noturna</h5>
-
-            <a href="asanoturn.html" class="btn btn-secondary"><i class="fa fa-feather-pointed"></i> Ver mais</a>
-            <!--
-                        -... . -. ..-   . .. ... .-.
-            -->
-          </div>
-
-        </div>
-
-      </div>
-
-
-      
-      <!-- Card Tony Stark -->
-
-      <div class="col-12 col-md-6 col-lg-4 mb-4">
-
-        <div class="card h-100">
-
-          <img src="imagens/img_iron-man.jpg" class="card-img-top" alt="Asa Noturna">
-
-          <div class="card-body text-center">
-
-            <h5 class="card-title">Asa Noturna</h5>
-
-            <a href="ironman.html" class="btn btn-secondary"><i class="fa fa-lightbulb"></i> Ver mais</a>
-            <!--
-                        -... . -. ..-   . .. ... .-.
-
-
-                        
-            -->
-          </div>
-
-        </div>
-
-      </div>
-
     </div>
 
-  </main>
+    <!-- oCodigo JS -->
 
-  <!-- Rodapé -->
-
-  <footer class="text-center mt-5 text-muted">
-
-    <p> &copy; 2025 HeroFandom - By Ben B | Waste Time</p>
-
-  </footer>
-
-  <script src="bootstrap/javascript/bootstrap.bundle.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
 </body>
-
 </html>

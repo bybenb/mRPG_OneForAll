@@ -4,6 +4,8 @@
     # (F) 2n25 PlvvdrUSJ. Doo Uljkwv Uhvhuyhg 'Ehqb Uhlv LL'
 */
 
+
+/* oFlexivel */
 body {
     font-family: 'Arial', sans-serif;
     background: #0a0a1a;
@@ -65,6 +67,9 @@ button:hover {
   right: 10px;
   font-size: 10px;
 }
+
+
+
 
 /* Controles Mobile */
 .mobile-controls {
@@ -140,78 +145,13 @@ button:hover {
     }
     
     .mobile-controls {
-        display: none !important; /* Esconde os botões físicos */
+        /* display: none !important; Esconde os botões físicos */
+
+        display: flex;
     }
 }
 
 
-
-
-/* 
-
-@media (max-width: 768px) {
-  body {
-    height: auto;
-    min-height: 100vh;
-    padding: 10px;
-    overflow: auto;
-  }
-  
-  h1 {
-    font-size: 1.8em !important;
-    margin: 5px 0;
-  }
-  
-  .game-info {
-    font-size: 1em !important;
-    margin-bottom: 10px;
-  }
-  
-  .game-container {
-    width: 100%;
-    max-width: 100%;
-  }
-  
-  canvas {
-    width: 100% !important;
-    height: auto !important;
-    max-height: 60vh;
-    border-width: 1px;
-  }
-  
-  #start-btn {
-    padding: 8px 15px;
-    font-size: 1em;
-    margin-top: 10px;
-  }
-  
-  .mobile-controls {
-    position: fixed;
-    bottom: 10px;
-    left: 0;
-    right: 0;
-    padding: 10px;
-    background: rgba(10, 10, 26, 0.8);
-    z-index: 100;
-  }
-  
-  .control-btn {
-    padding: 12px 15px;
-    font-size: 1em;
-  }
-  
-  #shoot-btn {
-    margin: 0 5px;
-  }
-}
-
-
-
-
-
-
-
-*/
 
 
 

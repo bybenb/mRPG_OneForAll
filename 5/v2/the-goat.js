@@ -7,15 +7,15 @@ const totalImages = 3;
 function loadImages() {
   playerImg = new Image();
   playerImg.onload = imageLoaded;
-  playerImg.src = 'https://assets.codepen.io/21542/ship.png'; // Substitua pelo caminho da sua imagem de nave
+  playerImg.src = 'imagens/img_nave.png'; // 
   
   obstacleImg = new Image();
   obstacleImg.onload = imageLoaded;
-  obstacleImg.src = 'https://assets.codepen.io/21542/meteor.png'; // Substitua pelo caminho da sua imagem de meteoro
+  obstacleImg.src = 'imagens/img_meteoroide.png'; // 
   
   backgroundImg = new Image();
   backgroundImg.onload = imageLoaded;
-  backgroundImg.src = 'https://assets.codepen.io/21542/space-bg.png'; // Substitua pelo caminho da sua imagem de fundo espacial
+  backgroundImg.src = 'imagens/img_space.png'; //
 }
 
 function imageLoaded() {
@@ -199,10 +199,5 @@ canvas.addEventListener("touchstart", function (e) {
 
 // Carregar ranking inicial
 carregarRanking();
-
-
-
-
-
 
 

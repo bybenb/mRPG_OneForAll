@@ -279,3 +279,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
   checkIfMobile();
 });
+
+

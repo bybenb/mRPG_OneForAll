@@ -270,10 +270,14 @@ document.addEventListener("DOMContentLoaded", () => {
     setupTouchControls();
     setupKeyboardControls();
     
-    // Esconde controles físicos se for mobile
-    if (isMobile) {
-      document.querySelector('.mobile-controls').style.display = 'none';
-    }
+    // // Esconde controles físicos se for mobile
+    // if (!isMobile) {
+    //   document.querySelector('.mobile-controls').style.display = 'none';
+    // }
+
+    // else { 
+    //   document.querySelector('.mobile-controls').style.display = 'flex';
+    // }
 
     initEnemies();
 
@@ -294,19 +298,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
   init();
 });  // Redimensionamento responsivo
-  window.addEventListener('resize', () => {
-    if (!gameRunning) {
-      const newWidth = Math.min(window.innerWidth * 0.95, 600);
-      const newHeight = Math.min(window.innerHeight * 0.65, 700);
+
+
+  // window.addEventListener('resize', () => {
+  //   if (!gameRunning) {
+  //     const newWidth = Math.min(window.innerWidth * 0.95, 600);
+  //     const newHeight = Math.min(window.innerHeight * 0.65, 700);
       
-      if (canvas.width !== newWidth || canvas.height !== newHeight) {
-        canvas.width = newWidth;
-        canvas.height = newHeight;
+  //     if (canvas.width !== newWidth || canvas.height !== newHeight) {
+  //       canvas.width = newWidth;
+  //       canvas.height = newHeight;
         
-        // Ajusta posição do jogador
-        player.x = canvas.width / 2 - PLAYER_WIDTH / 2;
-        player.y = canvas.height - PLAYER_HEIGHT * 2;
-      }
-    }
-  });
-});
+  //       // Ajusta posição do jogador
+  //       player.x = canvas.width / 2 - PLAYER_WIDTH / 2;
+  //       player.y = canvas.height - PLAYER_HEIGHT * 2;
+  //     }
+  //   }
+  // });
+// });
