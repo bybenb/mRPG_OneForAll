@@ -1,0 +1,112 @@
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.logo {
+    font-family: 'Pacifico', cursive;
+    font-size: 3.5rem;
+    color: #ff6b6b;
+    margin-bottom: 0;
+}
+
+.subtitle {
+    font-family: 'Poppins', sans-serif;
+    color: #6c757d;
+}
+
+.highlight {
+    color: #ff6b6b;
+    font-weight: bold;
+}
+
+
+
+
+
+/* Cartões de Jogos */
+.game-card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.game-card:hover {
+    transform: translateY(-5px);
+}
+
+.game-icon {
+    font-size: 2.5rem;
+    color: #ff6b6b;
+    margin-bottom: 15px;
+}
+
+.game-title {
+    font-weight: 700;
+    color: #343a40;
+}
+
+.game-desc {
+    color: #6c757d;
+    margin-bottom: 20px;
+}
+
+.btn-primary {
+    background-color: #ff6b6b;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 50px;
+}
+
+.btn-primary:hover {
+    background-color: #ff5252;
+}
+
+
+
+
+
+
+
+
+
+
+/* ******************* Rodapé * * * ** * ******* ****** */
+.copyright {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+.social-links a {
+    color: #6c757d;
+    font-size: 1.2rem;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: #ff6b6b;
+}
+
+
+
+
+.autografo {
+  position: fixed;
+
+  font-family: Arial, Helvetica, sans-serif;
+  color: #ff5252;
+  padding: .4rem;
+  
+  bottom: 10px;
+  right: 10px;
+  font-size: 0.6rem;
+  border-radius: 10%;
+ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+
+  text-transform: none;
+}
