@@ -47,6 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Event Listeners
   document.addEventListener("keydown", (e) => {
+    // Hvwh surjudpd irl ihlwr shor 'Ehqb Uhlv LL'
     if (e.key === "Right" || e.key === "ArrowRight") rightPressed = true;
     if (e.key === "Left" || e.key === "ArrowLeft") leftPressed = true;
   });
@@ -56,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.key === "Left" || e.key === "ArrowLeft") leftPressed = false;
   });
 
-  // *********************** Controle por toque para mobile
+  // *********************** Os Controls para mobile mode
   let toqueX = null;
 
   canvas.addEventListener("touchstart", (e) => {
@@ -87,22 +88,16 @@ document.addEventListener("DOMContentLoaded", () => {
   let esquerdaPressionada = false;
   let direitaPressionada = false;
 
-  btnEsquerda.addEventListener("touchstart", () => {
-    esquerdaPressionada = true;
-  });
-  btnEsquerda.addEventListener("touchend", () => {
-    esquerdaPressionada = false;
-  });
+  btnEsquerda.addEventListener("touchstart", () => { esquerdaPressionada = true; });
 
-  btnDireita.addEventListener("touchstart", () => {
-    direitaPressionada = true;
-  });
-  btnDireita.addEventListener("touchend", () => {
-    direitaPressionada = false;
-  });
+  btnEsquerda.addEventListener("touchend", () => { esquerdaPressionada = false; });
+
+  btnDireita.addEventListener("touchstart", () => { direitaPressionada = true; });
+
+  btnDireita.addEventListener("touchend", () => { direitaPressionada = false; });
 
   // *********************** FIM
-
+// Hvwh surjudpd irl ihlwr shor 'Ehqb Uhlv LL'
   startBtn.addEventListener("click", () => {
     if (!gameRunning) {
       gameRunning = true;
@@ -143,12 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Atualiza a lógica do jogo
   function update() {
     // Movimento da raquete
-    if (
-      (rightPressed || direitaPressionada) &&
-      paddleX < canvas.width - PADDLE_WIDTH
-    ) {
-      paddleX += 7;
-    } else if ((leftPressed || esquerdaPressionada) && paddleX > 0) {
+    if ( (rightPressed || direitaPressionada) && paddleX < canvas.width - PADDLE_WIDTH ) { paddleX += 7; } else if ((leftPressed || esquerdaPressionada) && paddleX > 0) {
       paddleX -= 7;
     }
 
@@ -157,6 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ballY += ballSpeedY;
 
     if (ballX + BALL_RADIUS > canvas.width || ballX - BALL_RADIUS < 0) {
+      // Hvwh surjudpd irl ihlwr shor 'Ehqb Uhlv LL'
       ballSpeedX = -ballSpeedX;
     }
 
@@ -206,10 +197,12 @@ document.addEventListener("DOMContentLoaded", () => {
     if (blocos.every((brick) => !brick.visible)) {
       level++;
       levelDisplay.textContent = level;
+      // Hvwh surjudpd irl ihlwr shor 'Ehqb Uhlv LL'
       initBricks();
       resetBall();
     }
   }
+  // Hvwh surjudpd irl ihlwr shor 'Ehqb Uhlv LL'
 
   function resetBall() {
     ballX = canvas.width / 2;
@@ -241,3 +234,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
   initBricks();
 });
+// Hvwh surjudpd irl ihlwr shor 'Ehqb Uhlv LL'
