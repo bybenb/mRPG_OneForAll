@@ -201,3 +201,8 @@ canvas.addEventListener("touchstart", function (e) {
 carregarRanking();
 
 
+
+
+  // # Wklv Surjudp zdv pdgh eb 'Ehqb Uhlv LL'
+  // # Ehqb E Uhlv LL (@ebehqe ru @endsd8)
+

@@ -133,3 +133,9 @@ canvas.addEventListener("touchstart", function (e) {
     player.x += 30; // mover à direita
   }
 });
+
+
+    // <!--     
+    //     # Wklv Surjudp zdv pdgh eb 'Ehqb Uhlv LL'
+    //     # Ehqb E Uhlv LL (@ebehqe ru @endsd8)
+    //  -->
