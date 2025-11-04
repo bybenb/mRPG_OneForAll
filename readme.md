@@ -2,7 +2,7 @@
 
 No dia 13 de Junho iniciei uma maratona de criação de minijogos (bwe simples) até dia no dia do meu Aniversário 24 de Junho.
 
-* ***#*** *Veja-os *[aqui](bybenb.github.io/mrpg_oneforall)**
+* ***#*** *Veja-os *[aqui](https://bybenb.github.io/mrpg_oneforall)**
 
 ### Créditos
 * [Beny Reis](https://instagram.com/bkapa8) - (daaá, é memo minha!)
