@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+  box-sizing: border-box;
+} 
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+  background-color: rgb(23, 184, 139);
+}
+
+p, h1, h2, h3, h4 {
+  display: inline-block;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 0px;
+}
+
+.wrapper {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.duck *,
+.duckling * {  
+  background-size: calc(var(--w) * var(--m)) calc(var(--h) * var(--m)) !important; 
+  background-repeat: no-repeat !important;
+  image-rendering: pixelated;
+}
+
+.duck,
+.duckling {
+  position: absolute;
+  transition: 1s;
+  --w: 20;
+  --h: 14; 
+  --m: 2px;
+  --neck-w: 16;
+  width: calc(var(--w) * var(--m));
+  height: calc(var(--h) * var(--m));
+  --color: #fff;
+  --dark-yellow: #fcc85b;
+}
+
+.body {
+  position: absolute;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAAAXNSR0IArs4c6QAAAFRJREFUOE9jZMAC/v///x+bOLoYIyMjI4YYsgCxBuEzGG4DuYbBDIe5FmwgpYYhG0p9A6nlOrgrR6CBgz+WYbFDaeSgJGxKDUXO0xiZm5QwxVY4AADV9Tf/s/CuJAAAAABJRU5ErkJggg==);
+  width: calc(var(--w) * var(--m));
+  height: calc(var(--h) * var(--m));
+}
+
+.tail {
+  position: absolute;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAHCAYAAAArkDztAAAAAXNSR0IArs4c6QAAAC1JREFUGFdjZICC/////wcxGRkZGcE0iIAJwhSBJHFLoKuG68IpgdcOZEmYvQA6WRwAeFIlLwAAAABJRU5ErkJggg==);
+  --w: 6;
+  --h: 7;
+  --x: calc(7 * var(--m));
+  --y: calc(-2 * var(--m));
+  width: calc(var(--w) * var(--m));
+  height: calc(var(--h) * var(--m));
+  transform: translate(var(--x), var(--y));
+  transition: 1s;
+  z-index: -10;
+}
+
+.up .tail {
+  --y: calc(-2 * var(--m));
+}
+
+.right .tail {
+  --x: calc(-2 * var(--m));
+}
+
+.down .tail {
+  --y: calc(-4 * var(--m));
+}
+
+.left .tail {
+  --x: calc(15 * var(--m));
+}
+
+
+.neck {
+  position: absolute;
+  background-color: --var(--color);
+  width: calc(var(--neck-w) * 1px);
+  height: calc(8 * var(--m));
+  transition: 0.8s;
+  bottom: 0;
+}
+
+.neck-base {
+  position: absolute;
+  width: calc(8 * var(--m));
+  height: calc(8 * var(--m));
+  --x: calc(6 * var(--m));
+  --y: calc(2 * var(--m));
+  transform: translate(var(--x), var(--y));
+  transition: 0.3s;
+  z-index: 2;
+}
+
+.up .neck-base{
+  --y: calc(2 * var(--m));
+}
+
+.right .neck-base{
+  --x: calc(10 * var(--m));
+}
+
+.down .neck-base{
+  --y: calc(3 * var(--m));
+}
+
+.left .neck-base{
+  --x: calc(2 * var(--m));
+}
+
+
+.head {
+  position: absolute;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAAAXNSR0IArs4c6QAAAF9JREFUOE/t1EsKACAIBUDf/Q9tRBhmf7FdLQPHUgsUvBDs0RRkZl4lAzCM7TZ3kE1i4Qa8xQTXaAW9mEU/6J9Kacy7GuazeTs9HBu57C26HGxdwR18/PT8bSmR4b9NAm06MBHW1BzVAAAAAElFTkSuQmCC);
+  --w: 20;
+  --h: 16; 
+  width: calc(var(--w) * var(--m));
+  height: calc(var(--h) * var(--m));
+  margin-top: calc(var(--h) * -2px + 4px);
+  margin-left: calc(((var(--w) * 2) - var(--neck-w)) * -0.5px);
+}
+
+
+.down.left .head,
+.down.right .head {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAAAXNSR0IArs4c6QAAAIRJREFUOE9jZKAyYKSyeQw4Dfz///9/fJYxMjJi1YshSMggdEvQDUYxkFTDYIYjGwo3kFzD0A0dYgZmmUowTDv9Amfk4pOHhSOKl6luICWJHMOFf05EYU3IzOZLCdqDkWxwGQYzCZ+hGAmbkGG4DMWb9QgZymKxjOhCBK4Ql6GkGAbyDQD+hEQRv/jlIAAAAABJRU5ErkJggg==);
+}
+
+.up.left .head,
+.up.right .head {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAAAXNSR0IArs4c6QAAAIFJREFUOE9jZICCPyei/sPYyDSLxTJGbOK4xMCKcRkG00SKoYzYDGM2X0rQUYyMjFhdjuFCYgxDtg3dYLgtIJeSahjMYGRD4Qb+//8fa6QQ9DtUAczQUQOJDTFMdbQPQ5Cd5MY01mQD8wSphuJM2OihQshgvFmP/KjAEjnUNAxkFgC13zgRXycP6gAAAABJRU5ErkJggg==);
+}
+
+.down .head {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAAAXNSR0IArs4c6QAAAJZJREFUOE9jZKAyYKSyeQw4Dfz///9/fJYxMjJi1YshSMggdEvQDUYxkFTDYIYjGwo3kFzD0A0dogZmmUowTDv9Am+KQlcDC0esXqa6geQkdgwXggxBj+m/J6Oxms1svhRFHGuygamAGYrLMJg6mKF4EzZM8Z8TUXizHUwdi8UyjJyGMy8TMhSbYSCL8JY2uAzFZRjIQAA6bUoRLru2rQAAAABJRU5ErkJggg==);
+}
+
+.up .head {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAAAXNSR0IArs4c6QAAAIFJREFUOE/t01EOgCAIBmBZ3anOUuers9SdajgfcGr8NNl6yzfH/BBBCsa6joW18DjvhI7BAMIEQqgKJmyYNuvy4T7XoKEPkJnVMmGJRJVRbXoxSUIFmkEv1qI/aE6KGZTGfPeGKb230+rYSD29aIklA/7lN7iF8jz626CfhDf0Joo7dzsRfj//OAAAAABJRU5ErkJggg==);
+}
+
+.left .head,
+.right .head {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAAAXNSR0IArs4c6QAAAIBJREFUOE9jZKAyYKSyeQw4Dfz///9/fJYxMjJi1YshSMggdEvQDUYxkFTDYIYjGwo3kFzD0A0dOAOzTCUYpp1+gTOeYN4m2oUkG/jnRBTWZMJsvpSopIriQlyGwUwixlC4gYQMI8ZQjGRDyFB8LsSZsEkNQ6KzHlExgEcR1UsbAK27NhEDLz+RAAAAAElFTkSuQmCC);
+}
+
+.right .head {
+  transform: scale(-1, 1);
+}
+
+.legs {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  width: calc(12 * var(--m));
+  height: calc(7 * var(--m));
+  left: calc(4 * var(--m));
+  bottom: calc(-4 * var(--m));
+  transition: 1s;
+  z-index: -1;
+  --angle: 180deg;
+}
+
+.leg {
+  position: relative;
+  background-color: var(--dark-yellow);
+  width: var(--m);
+  height: calc(7 * var(--m));
+}
+
+.leg:after {
+  position: absolute;
+  background-color: var(--dark-yellow);
+  content: '';
+  width: 4px;
+  height: 7px;
+  left: -1px;
+  bottom: 0px;
+  transform-origin: bottom center;
+  transform: rotate(var(--angle));
+}
+
+.up .legs {
+  --angle: 0deg;
+}
+
+.up.right .legs {
+  --angle: 45deg;
+}
+
+.right .legs {
+  --angle: 90deg;
+}
+
+.down.right .legs {
+  --angle: 135deg;
+}
+
+.down .legs {
+  --angle: 180deg;
+}
+
+.down.left .legs {
+  --angle: 225deg;
+}
+
+.left .legs {
+  --angle: 270deg;
+}
+
+.up.left .legs {
+  --angle: 315deg;
+}
+
+.waddle .leg {
+  animation: waddle 0.3s infinite;
+}
+
+.leg:nth-child(1) {
+  --one: calc(7 * var(--m));
+  --two: calc(4 * var(--m));
+}
+
+.leg:nth-child(2) {
+  --one: calc(4 * var(--m));
+  --two: calc(7 * var(--m));
+}
+
+@keyframes waddle {
+  0%, 100% {
+    height: var(--one);
+  }
+  50% {
+    height: var(--two);
+  }
+}
+
+.left .legs,
+.right .legs {
+  width: calc(10 * var(--m));
+  left: calc(5 * var(--m));
+}
+
+.duckling-target {
+  position: absolute;
+  /* background-color: #fff945; */
+  width: 12px;
+  height: 12px;
+  transition: 1.8s;
+  border-radius: 50%;
+}
+
+/* duckling */
+
+.duckling {
+  position: absolute;
+  /* left: 200px; */
+  --neck-w: 8;
+  --m: 1px;
+  --color: #fff04d;
+  transition: 0.5s;
+}
+
+.duckling .head {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAAAXNSR0IArs4c6QAAAGFJREFUOE9jZKAyYKSyeQw4Dfz/wfc/PssYBTZj1YshSMggdEvQDUYxkFTDYIYjGwo3kFzD0A0dNZD8VAmLGNqFIcht5MY01mQD8yyphuJN2MghSMhgorMe+dEC0Un10gYAfowwEW4KJvUAAAAASUVORK5CYII=);
+  margin-left: calc((var(--w) - var(--neck-w)) * -0.5px);
+  margin-top: calc(var(--h) * -1px + 2px);
+}
+
+.duckling.down.left .head,
+.duckling.down.right .head {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAAAXNSR0IArs4c6QAAAIVJREFUOE9jZKAyYKSyeQw4Dfz/wfc/PssYBTZj1YshSMggdEvQDUYxkFTDYIYjGwo3kFzD0A2lrYFZLqfAFk7bY4Y1PvDJw7yN4sLBbyAliRzDy39ORGFNyMwanwnag5FscBkGMwmfoRgJm5BhuAzFm/UIGcpisYzoQgSuEJehpBgG8g0Az0pNESONMLcAAAAASUVORK5CYII=);
+}
+
+.duckling.up.left .head,
+.duckling.up.right .head {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAAAXNSR0IArs4c6QAAAIFJREFUOE9jZICCPyei/sPYyDSLxTJGbOK4xMCKcRkG00SKoYzYDGPW+EzQUYwCm7G6HMOFxBiGbBu6wXBbQC4l1TCYwciGwg38/8EXa6QQ9DtUAczQUQOJDTFMdbQPQ5Cd5MY01mQD8wSphuJM2OihQshgvFmP/KjAEjnUNAxkFgDi4TsRTK7K8AAAAABJRU5ErkJggg==);
+}
+
+.duckling.down .head {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAAAXNSR0IArs4c6QAAAJdJREFUOE9jZKAyYKSyeQw4Dfz/wfc/PssYBTZj1YshSMggdEvQDUYxkFTDYIYjGwo3kFzD0A2lj4FZLqfAFk/bY4Y1XrDJw7yN1YWD30ByEjuGl0GGoMf03xu8WM1m1viMIo412cBUwAzFZRhMHcxQvAkbpvjPiSi82Q6mjsViGUZOw5mXCRmKzTCQRXhLG1yG4jIMZCAAfBdQEXRmcAUAAAAASUVORK5CYII=);
+}
+
+.duckling.up .head {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAAAXNSR0IArs4c6QAAAIRJREFUOE9jZMAD/pyI+o9NmsViGSMubTglcBkGMwiXoVgNBBnGrPEZn+MZ/t7gZcBmKIaB/z/4YvUmTi8KbEYxA4VDqmEwSxiRDIUbSK5h6IaOGog3peCVhEUM7cIQZD25MY012cD8Q6qhyIaBzMCZlwkZjG4QPD2SHw3YdeJ0IbkWAQBsyTsRjEgDjwAAAABJRU5ErkJggg==);
+}
+
+.duckling.left .head,
+.duckling.right .head {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAAAXNSR0IArs4c6QAAAH9JREFUOE9jZKAyYKSyeQw4Dfz/wfc/PssYBTZj1YshSMggdEvQDUYxkFTDYIYjGwo3kFzD0A0l2sAsl1NgvdP2mGENWpgrh5CBf05EYU0mzBqfiUqqKF7GZRjMJGIMhRtIyDBiDMVINoQMxedCnAmb1DAkOusRFQN4FFG9tAEAKQA+EfjQv5MAAAAASUVORK5CYII=);
+}
+
+.duckling .body {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAAAXNSR0IArs4c6QAAAFRJREFUOE9jZMAC/n/w/Y9NHF2MUWAzI4YYsgCxBuEzGG4DuYbBDIe5FmwgpYYhG0p9A6nlOrgrR6CBgz+WYbFDaeSgJGxKDUXO0xiZm5QwxVY4AADr4DT71oa+KgAAAABJRU5ErkJggg==);
+}
+
+.duckling .tail {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAHCAYAAAArkDztAAAAAXNSR0IArs4c6QAAAC1JREFUGFdjZICC/x98/4OYjAKbGcE0iIAJwhSBJHFLoKuG68IpgdcOZEmYqwCKgxp+Dp/FvAAAAABJRU5ErkJggg==);
+}
+
+.duckling.waddle .leg {
+  animation: waddle 0.2s infinite;
+}
+
+.duckling .leg:after {
+  height: 3px;
+  width: 2px;
+  left: 0;
+  bottom: 0px;
+}
+
+.duckling.hit .waddle {
+  animation: waddle 0.1s infinite;
+}
+
+button.create-duckling {
+  position: fixed;
+  bottom: 45px;
+  right: 30px;
+  --size: 60px;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAAAXNSR0IArs4c6QAAAbpJREFUaEPtmMGNwjAQRYmgAMqgASQK4LoVbAdbEB1QAVcKQNpmVnteiVWQgqLgeP54bGdkPteMx//Nn4xjutWb/bo3410RuHXH6TAdbqwCbOnGDH3BocN0uLEKsKUbM5RDiy2NtvT95+Mei+22F5fFVIuSQKdF8AauAtbCDvCeoGHgVFhv0NmAv47fD7bTdR98tb24TOC5ySu1dC2HBx2pHQM7/Hf7DB5D690vdJKlCpwmrwI8BzuIQaDHwBbRlrW9XtFhCRaBDsGmTu/iwL0wCRpx+FHd7aWbzgJtq1cBjkGjsLk+Q6sBzw0PaGIJQRqXFwGWjihNEUKw1vyxAopDKyTeKkgaWNb8WYGtYqy3qeotTWDNCxuI1QysfjkdVhbc5dCKMVR3eNxWyuK+hGvbeZGWHlRbh1cK7KLAFqdTYa0dBd2WkE1Qt5cEfX7sIEBSTH+b2hzO0QGIxEj75HieNKWnGyMwSEwOICkHgaUKjZ+P/xiYa2kkRrOnNdbkMAKDxFghNOtNwJqNvMQS2IsTpXTQ4VKV9ZKXDntxopQOOlyqsl7y0mEvTpTSQYdLVdZLXjrsxYlSOv4BWdLiPeCnzDQAAAAASUVORK5CYII=);
+  width: var(--size);
+  height: var(--size);
+  border-width: 0;
+  background-color: rgb(2, 117, 115);
+  background-size: var(--size) !important; 
+  background-repeat: no-repeat !important;
+  border-radius: 50%;
+  image-rendering: pixelated;
+  cursor: pointer;
+  z-index: 100;
+}
+
+button.create-duckling:hover {
+  border: 2px solid white;
+  width: calc(var(--size) + 2px);
+  height: calc(var(--size) + 2px);
+}
+
+
+/* other */
+
+.sign {
+  position: absolute;
+  color: #fff945;
+  bottom: 10px;
+  right: 10px;
+  font-size: 10px;
+}
+
+a {
+  color: #fff945;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.indicator {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  color: #fff945;
+  display: none; /* uncomment this bit to see development info */
+}
+
+.indicator {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+}
+
+.marker {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-top: -5px;
+  margin-left: -5px;
+  transition: 0.1s;
+  z-index: 100;
+  display: none; /* uncomment this bit to see marker */
+}
+
+.red { 
+  background-color: rgb(223, 74, 41); 
+}
+.blue { 
+  background-color: rgb(140, 238, 250); 
+}
+.yellow {
+  background-color: yellow; 
+}
+.pink {
+  background-color: hotpink; 
+}
+.green { 
+  background-color: rgb(88, 236, 127); 
+}
+.purple {
+  background-color: purple; 
+}
+
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+  
+    <!-- remove display: none from marker class to see these -->
+    <div class="marker red"></div>
+    <div class="marker blue"></div>
+    <div class="marker yellow"></div>
+    <div class="marker pink"></div>
+    <div class="marker green"></div>
+    <div class="marker purple"></div>
+  
+    <div class="duck down">
+      <div class="neck-base">
+        <div class="neck">
+          <div class="head"></div>
+        </div>
+      </div>
+      <div class="tail"></div>
+      <div class="body"></div>
+      <div class="legs">
+        <div class="leg"></div>
+        <div class="leg"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <button class="create-duckling"></button>
+  
+  <div class="indicator"></div>
+  <div class="sign">
+    by masahito / <a href="http://www.ma5a.com/" >ma5a.com</a>
+  </div>
+  
+  <script>
+     const wrapper = document.querySelector('.wrapper')
+  const marker = document.querySelectorAll('.marker')
+  const indicator = document.querySelector('.indicator')
+  const createDucklingBtn = document.querySelector('.create-duckling')
+
+  const data = {
+    interval: null,
+    target: { x: 0, y: 0 },
+    newTarget: { x: 0, y: 0 },
+    cursor: { x: 0, y: 0 },
+    duck: {
+      x: 0,
+      y: 0,
+      angle: 0,
+      direction: '',
+      offset: { x: 20, y: 14 },
+      el: document.querySelector('.duck'),
+      direction: 'down',
+    },
+    ducklingTargets: [],
+    ducklings: []
+  }
+
+  const directionConversions = {
+    360: 'up', 45: 'up right', 90: 'right', 135: 'down right', 180: 'down', 225: 'down left', 270: 'left', 315: 'up left',
+  }
+
+  const px = num => `${num}px`
+  const radToDeg = rad => Math.round(rad * (180 / Math.PI))
+  const degToRad = deg => deg / (180 / Math.PI)
+  const nearestN = (x, n) => x === 0 ? 0 : (x - 1) + Math.abs(((x - 1) % n) - n)
+  const randomN = max => Math.ceil(Math.random() * max)
+  const overlap = (a, b, buffer) =>{
+    const bufferToApply = buffer || 20
+    return Math.abs(a - b) < bufferToApply
+  }
+
+  const positionMarker = (i, pos) => {
+    marker[i].style.left = px(pos.x)
+    marker[i].style.top = px(pos.y)
+  }
+
+  const offsetPosition = data => {
+    return {
+      x: data.x + data.offset.x,
+      y: data.y + data.offset.y,
+    }
+  }
+
+  const checkCollision = ({ a, b, buffer }) =>{
+    return overlap(a.x, b.x, buffer) && overlap(a.y, b.y, buffer)
+  }
+
+  const setStyles = ({ el, x, y }) => {
+    el.style.transform = `translate(${x ? px(x) : 0}, ${y ? px(y) : 0})`
+    el.style.zIndex = y
+  }
+
+  const updateData = (data, newData) => {
+    Object.keys(newData).forEach(key => {
+      data[key] = newData[key]
+    })
+  }
+
+  const moveDucklingTargets = ({ x, y }) => {
+    data.ducklingTargets.forEach((duckling, i) => {
+      clearTimeout(duckling.timer)
+      duckling.timer = setTimeout(() => {
+        moveDuck(duckling, getOffsetPos({
+          x, y,
+          angle: data.duck.angle + 180,
+          distance: 60 + (80 * i)
+        }))
+      }, 150 + randomN(40))
+    })
+  }
+
+  const moveDuck = (duck, { x, y }) => {
+    updateData(duck, { x, y })
+    setStyles(duck)
+  }
+
+  const moveMotherDuck = ({ x, y }) => {
+    moveDuck(data.duck, { x, y })
+    moveDucklingTargets({ x, y })
+  }
+
+  const elAngle = (el, pos) => {
+    const { x, y } = pos
+    const angle = radToDeg(Math.atan2(el.y - y, el.x - x)) - 90
+    const adjustedAngle = angle < 0 ? angle + 360 : angle
+    return nearestN(adjustedAngle, 1)
+  }
+
+  const rotateCoord = ({ deg, x, y, offset }) => {
+    const rad = degToRad(deg)
+    const nX = x - offset.x
+    const nY = y - offset.y
+    const nSin = Math.sin(rad)
+    const nCos = Math.cos(rad)
+    return {
+      x: Math.round((nCos * nX - nSin * nY) + offset.x),
+      y: Math.round((nSin * nX + nCos * nY) + offset.y)
+    }
+  }
+
+  const distanceBetween = (a, b) => Math.round(Math.sqrt(Math.pow((a.x - b.x), 2) + Math.pow((a.y - b.y), 2)))
+
+  const getOffsetPos = ({ x, y, distance, angle }) => {
+    return {
+      x: x + (distance * Math.cos(degToRad(angle - 90))),
+      y: y + (distance * Math.sin(degToRad(angle - 90)))
+    }
+  }
+
+  const getNewPosBasedOnTarget = ({ start, target, distance: d, fullDistance }) => {
+    const { x: aX, y: aY } = start
+    const { x: bX, y: bY } = target
+
+    const remainingD = fullDistance - d
+    return {
+      x: Math.round(((remainingD * aX) + (d * bX)) / fullDistance),
+      y: Math.round(((remainingD * aY) + (d * bY)) / fullDistance)
+    }
+  }
+
+  const getDirection = ({ pos, facing, target }) => {
+    const dx2 = facing.x - pos.x
+    const dy1 = pos.y - target.y
+    const dx1 = target.x - pos.x
+    const dy2 = pos.y - facing.y
+
+    return dx2 * dy1 > dx1 * dy2 ? 'anti-clockwise' : 'clockwise'
+  }
+
+  const updateCursorPos = e => {
+    data.cursor.x = e.pageX
+    data.cursor.y = e.pageY
+
+    positionMarker(0, data.cursor)
+  }
+
+  const returnAngleDiff = ({ angleA, angleB }) => {
+    const diff1 = Math.abs(angleA - angleB)
+    const diff2 = 360 - diff1
+
+    return diff1 > diff2 ? diff2 : diff1
+  }
+
+  const getDirectionClass = angle => {
+    return directionConversions[nearestN(angle, 45)]
+  }
+
+  const setNewTargetAndDirection = fullDistance => {
+    const distanceToMove = fullDistance > 80 ? 80 : fullDistance
+    data.newTarget = getNewPosBasedOnTarget({
+      distance: distanceToMove,
+      fullDistance,
+      start: offsetPosition(data.duck),
+      target: data.cursor
+    })
+    data.duck.direction = getDirection({
+      pos: offsetPosition(data.duck),
+      facing: data.target,
+      target: data.newTarget
+    })
+
+    positionMarker(3, offsetPosition(data.duck))
+    positionMarker(2, data.target)
+    positionMarker(1, data.newTarget)
+  }
+
+  const turnMotherDuckAndUpdateDirection = ({ diff, limit }) => {
+    const angle = elAngle(offsetPosition(data.duck), rotateCoord({
+      deg: {
+        'clockwise': diff > limit ? limit : diff,
+        'anti-clockwise': diff > limit ? -limit : -diff
+      }[data.duck.direction],
+      x: data.target.x,
+      y: data.target.y,
+      offset: offsetPosition(data.duck),
+    }))
+
+    // determine how much the duck waddles
+    moveMotherDuck(getOffsetPos({
+      x: data.duck.x,
+      y: data.duck.y,
+      distance: 50,
+      angle
+    }), data.duck)
+    data.target = getOffsetPos({
+      x: data.duck.x,
+      y: data.duck.y,
+      distance: 100,
+      angle
+    })
+    
+    // check how much the duck turned and round to nearest 45 degrees
+    const newAngle = elAngle(offsetPosition(data.duck), data.target)
+    updateData(data.duck, { angle: newAngle, direction: getDirectionClass(newAngle) })
+    data.duck.el.className = `duck waddle ${data.duck.direction}`
+    indicator.innerHTML = `duck waddle ${data.duck.direction}`
+  }
+  
+  moveMotherDuckTowardsTarget = () => {
+    const angle = elAngle(offsetPosition(data.duck), data.newTarget)
+    const direction = getDirectionClass(angle)
+    data.duck.el.className = `duck waddle ${direction}`
+    indicator.innerHTML = `duck waddle ${direction}`
+
+    moveMotherDuck(data.newTarget, data.duck)
+    positionMarker(4, data.duck)
+
+    data.target = getOffsetPos({
+      x: data.duck.x,
+      y: data.duck.y,
+      distance: 50,
+      angle
+    })
+    updateData(data.duck, { angle, direction })
+    positionMarker(5, data.target)
+  }
+
+  const triggerDuckMovement = () => {
+    data.interval = setInterval(() => {
+      const fullDistance = distanceBetween(offsetPosition(data.duck), data.cursor)
+
+      if (!fullDistance || fullDistance < 80) {
+        // stop waddling when close to target
+        data.duck.el.classList.remove('waddle')
+        return
+      }
+      setNewTargetAndDirection(fullDistance)
+
+      const howMuchMotherDuckNeedsToTurn = returnAngleDiff({
+        angleA: elAngle(offsetPosition(data.duck), data.target),
+        angleB: elAngle(offsetPosition(data.duck), data.newTarget)
+      })
+      const maxAngleMotherDuckCanTurn = 60
+
+      howMuchMotherDuckNeedsToTurn > maxAngleMotherDuckCanTurn
+        ? turnMotherDuckAndUpdateDirection({ 
+            diff: howMuchMotherDuckNeedsToTurn, 
+            limit: maxAngleMotherDuckCanTurn 
+          })
+        : moveMotherDuckTowardsTarget()
+
+    }, 500)
+  }
+
+  const moveDucklings = () => {
+    data.ducklings.forEach((duckling, i) => {
+      if (duckling.hit) return
+      const fullDistance = distanceBetween(duckling, data.ducklingTargets[i])
+  
+      if (!fullDistance || fullDistance < 40) {
+        duckling.el.classList.remove('waddle')
+        return
+      }
+      moveDuck(duckling, getNewPosBasedOnTarget({
+        distance: 30,
+        fullDistance,
+        start: duckling,
+        target: data.ducklingTargets[i]
+      }))
+      const angle = elAngle(offsetPosition(duckling), data.ducklingTargets[i])
+      updateData(duckling, { direction: getDirectionClass(angle) })
+      duckling.el.className = `duckling waddle ${duckling.direction}`
+    })
+  }
+
+  const collisionCheckDucklings = () => {
+    data.ducklings.forEach(duckling => {
+      const { x, y } = duckling.el.getBoundingClientRect()
+      if (checkCollision({ 
+        a: data.duck, 
+        b: { x, y },
+        buffer: 40  
+      })) {
+        duckling.el.classList.add('hit')
+        duckling.hit = true
+  
+        const { direction } = duckling
+        const x = direction.includes('right') 
+          ? -20 
+          : direction.includes('left') 
+          ? 20
+          : 0
+  
+        const y = direction.includes('up') 
+          ? 20 
+          : direction.includes('down')
+          ? -20
+          : 0 
+  
+        moveDuck(duckling, {
+          x: duckling.x + x, 
+          y: duckling.y + y, 
+        })
+        setTimeout(()=> {
+          duckling.el.classList.remove('hit')
+          duckling.hit = false
+        }, 900)
+      }
+    })
+  }
+
+  const createDuckling = () =>{
+    const newDucklingTarget = document.createElement('div')
+    newDucklingTarget.classList.add('duckling-target')
+    const newDuckling = document.createElement('div')
+    newDuckling.classList.add('duckling')
+    newDuckling.innerHTML = `
+      <div class="neck-base">
+        <div class="neck">
+          <div class="head"></div>
+        </div>
+      </div>
+      <div class="tail"></div>
+      <div class="body"></div>
+      <div class="legs">
+        <div class="leg"></div>
+        <div class="leg"></div>
+      </div>`
+    ;[newDucklingTarget, newDuckling].forEach(ele => wrapper.appendChild(ele))
+
+    data.ducklings.push({ el: newDuckling, x: 0, y: 0, direction: 'down', offset: { x: 10, y: 7 }, hit: false })
+    data.ducklingTargets.push({ el: newDucklingTarget, x: 0, y: 0, timer: null, offset: 6 })
+
+    moveDuck(data.ducklings[data.ducklings.length - 1], { x: -50, y: -50, })
+  }
+
+
+  // set up
+  ;['click', 'mousemove'].forEach(action => window.addEventListener(action, updateCursorPos))
+
+  createDucklingBtn.addEventListener('click', ()=> {
+    createDuckling()
+
+    clearInterval(data.interval)
+    triggerDuckMovement()
+  })
+
+  const { width, height } = wrapper.getBoundingClientRect()
+  updateData(data.cursor, { x: width / 2, y: height / 2 })
+  triggerDuckMovement()
+  for (let n = 0; n < 3; n++) {
+    createDuckling()
+  }
+  setInterval(moveDucklings, 300)
+  setInterval(collisionCheckDucklings, 100)
+  </script>
+</body>
+</html>
+
+
